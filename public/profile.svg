@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Freyza Fachrurrozi Kusuma">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#050507"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f5ff"/>
+      <stop offset="100%" stop-color="#bf00ff"/>
+    </linearGradient>
+    <radialGradient id="face" cx="50%" cy="38%" r="45%">
+      <stop offset="0%" stop-color="#1a1a24"/>
+      <stop offset="100%" stop-color="#0d0d12"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="188" fill="none" stroke="url(#glow)" stroke-width="4" opacity="0.85"/>
+  <circle cx="200" cy="155" r="72" fill="url(#face)" stroke="#00f5ff" stroke-width="2" opacity="0.9"/>
+  <ellipse cx="200" cy="290" rx="95" ry="78" fill="url(#face)" stroke="#bf00ff" stroke-width="2" opacity="0.75"/>
+  <text x="200" y="215" text-anchor="middle" font-family="ui-monospace, monospace" font-size="56" font-weight="700" fill="#00f5ff">FK</text>
+  <text x="200" y="360" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#ffffff" opacity="0.45" letter-spacing="6">FREYZA_DEV</text>
+</svg>

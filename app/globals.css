@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  --color-nova-black: #050507;
+  --color-nova-dark: #0a0a0f;
+  --color-nova-cyan: #00f5ff;
+  --color-nova-purple: #bf00ff;
+  --color-nova-glow: rgba(0, 245, 255, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-nova-black text-white selection:bg-nova-cyan selection:text-black;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/5;
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 20px rgba(191, 0, 255, 0.5);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  /* Comfortable tap targets (44px min) on touch devices — sizing only; add inline-flex on the element */
+  .tap-target {
+    @apply min-h-11 px-4 py-2.5;
+  }
+
+  /* Project links: always visible on touch; reveal on hover for mouse users */
+  .project-actions {
+    @apply opacity-100 translate-y-0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .project-actions {
+      @apply opacity-0 translate-y-4 transition-all duration-300;
+    }
+
+    .group:hover .project-actions,
+    .group:focus-within .project-actions {
+      @apply opacity-100 translate-y-0;
+    }
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24 px-4 sm:px-6;
+  }
+
+  /* Space below fixed floating navbar (top offset + pill height + breathing room) */
+  .hero-nav-offset {
+    padding-top: calc(6.75rem + env(safe-area-inset-top, 0px));
+  }
+
+  @media (min-width: 640px) {
+    .hero-nav-offset {
+      padding-top: calc(7.5rem + env(safe-area-inset-top, 0px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-nav-offset {
+      padding-top: calc(8rem + env(safe-area-inset-top, 0px));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-safe-only {
+    display: none !important;
+  }
 }

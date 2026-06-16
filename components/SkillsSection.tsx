@@ -47,7 +47,7 @@ export function SkillsSection() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {skill.items.map((item) => (
-                      <span key={item} className="px-2 py-1 bg-white/5 rounded-md text-[10px] font-mono text-white/40">
+                      <span key={item} className="px-2 py-1 bg-white/5 rounded-md text-[10px] font-mono text-white/60">
                         {item}
                       </span>
                     ))}

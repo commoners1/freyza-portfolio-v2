@@ -82,7 +82,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-white/5 text-[10px] font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/20 text-center sm:text-left">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-white/5 text-[10px] font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/55 text-center sm:text-left">
           <p>© {new Date().getFullYear()} FREYZA_DEV // {locationLine}</p>
           <a href={site.resumePath} download className="inline-flex items-center justify-center tap-target hover:text-white transition-colors">
             Resume PDF

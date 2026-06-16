@@ -40,7 +40,7 @@ function ExperienceCard({
       <p className="text-white/60 text-sm leading-relaxed mb-4">{exp.description}</p>
       <div className={`flex flex-wrap gap-2 ${alignRight ? "lg:justify-end" : ""}`}>
         {exp.tech.map((t) => (
-          <span key={t} className="px-2 py-1 bg-white/5 rounded text-[10px] font-mono text-white/40">
+          <span key={t} className="px-2 py-1 bg-white/5 rounded text-[10px] font-mono text-white/60">
             {t}
           </span>
         ))}

@@ -79,7 +79,7 @@ export function HeroSection() {
       </Entrance>
 
       <div className="hidden sm:flex absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2">
-        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/20">Scroll to Explore</span>
+        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/55">Scroll to Explore</span>
         {ready && (
           <motion.div
             animate={{ y: [0, 8, 0] }}

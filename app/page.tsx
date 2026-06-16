@@ -7,11 +7,13 @@ import { SkillsSection } from "@/components/SkillsSection";
 import { DossierSection } from "@/components/DossierSection";
 import { Footer } from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import { SmoothScrollEnhancer } from "@/components/SmoothScrollEnhancer";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
       <JsonLd />
+      <SmoothScrollEnhancer />
       <BackgroundAura />
       <Navbar />
 

@@ -10,7 +10,7 @@ export const site: SiteConfig = {
     "Full-Stack Developer and Technical Team Lead with 6 years of experience building secure, high-performance web systems and AI-powered platforms. Skilled in NestJS, Node.js, React.js, Laravel, Prisma, and Docker, with expertise in REST API architecture, Salesforce integration, and payment gateway compliance.",
   mobileSummary:
     "6+ years building secure web systems, APIs & AI platforms.",
-  email: "freyza.kusuma.1@gmail.com",
+  email: "freyza.kusuma@icloud.com",
   phone: "+62 877 8738 0011",
   location: {
     city: "East Jakarta",

@@ -17,6 +17,8 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6.5rem;
+    overflow-x: clip;
+    scrollbar-gutter: stable;
   }
 
   @media (min-width: 640px) {
@@ -28,6 +30,17 @@
   body {
     @apply bg-nova-black text-white selection:bg-nova-cyan selection:text-black;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body.nav-menu-open {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   section,

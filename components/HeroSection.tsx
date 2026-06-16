@@ -96,7 +96,7 @@ export function HeroSection() {
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="hidden xl:block absolute left-[12%] top-1/2 glass px-4 py-3 rounded-xl border-nova-cyan/20"
+            className="hidden xl:block absolute left-[12%] top-[40%] glass px-4 py-3 rounded-xl border-nova-cyan/20"
           >
             <Cpu size={24} className="text-nova-cyan mb-2" aria-hidden />
             <div className="text-[10px] font-mono text-label-muted uppercase">Core Stack</div>

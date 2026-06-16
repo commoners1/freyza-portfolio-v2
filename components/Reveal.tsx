@@ -4,8 +4,9 @@ import type { ReactNode } from "react";
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { useMounted } from "@/lib/useClientMotion";
+import { useLightMotion } from "@/lib/useLightMotion";
 
-export function Reveal({
+function RevealAnimated({
   children,
   fromLeft = false,
   className = "",
@@ -18,9 +19,8 @@ export function Reveal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const mounted = useMounted();
-  const reduceMotion = useReducedMotion() ?? false;
   const isInView = useInView(ref, { once: true, margin: "-80px", amount: 0.12 });
-  const show = !mounted || reduceMotion || isInView;
+  const show = !mounted || isInView;
 
   return (
     <motion.div
@@ -39,6 +39,32 @@ export function Reveal({
   );
 }
 
+export function Reveal({
+  children,
+  fromLeft = false,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  fromLeft?: boolean;
+  className?: string;
+  delay?: number;
+}) {
+  const mounted = useMounted();
+  const reduceMotion = useReducedMotion() ?? false;
+  const lightMotion = useLightMotion();
+
+  if (!mounted || lightMotion || reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <RevealAnimated fromLeft={fromLeft} className={className} delay={delay}>
+      {children}
+    </RevealAnimated>
+  );
+}
+
 export function Entrance({
   children,
   className = "",
@@ -52,8 +78,9 @@ export function Entrance({
 }) {
   const mounted = useMounted();
   const reduceMotion = useReducedMotion() ?? false;
+  const lightMotion = useLightMotion();
 
-  if (!mounted || reduceMotion) {
+  if (!mounted || reduceMotion || lightMotion) {
     return <div className={className}>{children}</div>;
   }
 

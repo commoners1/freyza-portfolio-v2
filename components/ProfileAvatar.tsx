@@ -7,9 +7,12 @@ interface ProfileAvatarProps {
 }
 
 const sizeMap = {
-  sm: { className: "w-16 h-16", px: 64 },
-  md: { className: "w-24 h-24 sm:w-28 sm:h-28", px: 112 },
-  lg: { className: "w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36", px: 144 },
+  sm: { className: "w-16 h-16", sizes: "64px" },
+  md: { className: "w-24 h-24 sm:w-28 sm:h-28", sizes: "(max-width: 640px) 112px, 112px" },
+  lg: {
+    className: "w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36",
+    sizes: "(max-width: 640px) 176px, (max-width: 768px) 144px, 144px",
+  },
 };
 
 export function ProfileAvatar({ size = "lg", className = "" }: ProfileAvatarProps) {
@@ -25,8 +28,9 @@ export function ProfileAvatar({ size = "lg", className = "" }: ProfileAvatarProp
           alt={site.name}
           fill
           className="object-cover"
-          sizes={`${dimensions.px}px`}
+          sizes={dimensions.sizes}
           priority
+          quality={80}
         />
       </div>
     </div>

@@ -47,15 +47,40 @@
   footer#contact {
     @apply relative;
   }
+
+  @media (hover: none), (pointer: coarse) {
+    section:not(#id) {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 40rem;
+    }
+  }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-white/[0.08] border border-white/10;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
 
   .glass-dark {
-    @apply bg-black/40 backdrop-blur-2xl border border-white/5;
+    @apply bg-black/50 border border-white/5;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .glass {
+      @apply bg-white/5;
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
+    }
+
+    .glass-dark {
+      @apply bg-black/40;
+      -webkit-backdrop-filter: blur(40px);
+      backdrop-filter: blur(40px);
+    }
   }
 
   .text-glow-cyan {

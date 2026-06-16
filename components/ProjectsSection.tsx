@@ -13,6 +13,8 @@ import { useCanHover } from "@/lib/useCanHover";
 import { useMounted } from "@/lib/useClientMotion";
 
 const MOBILE_PREVIEW_COUNT = 3;
+/** Card image area is ~176–224px tall; cap requested width for smaller downloads. */
+const PROJECT_CARD_IMAGE_SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 520px";
 
 function ProjectLinks({
   project,
@@ -75,7 +77,7 @@ function ProjectCard({
   project: Project;
   onInfo: () => void;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
   const canHover = useCanHover();
   const mounted = useMounted();
 
@@ -98,11 +100,15 @@ function ProjectCard({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!enableTilt || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    if (!width || !height) return;
+
     const mouseXPos = e.clientX - rect.left;
     const mouseYPos = e.clientY - rect.top;
 
-    x.set(mouseXPos / rect.width - 0.5);
-    y.set(mouseYPos / rect.height - 0.5);
+    x.set(mouseXPos / width - 0.5);
+    y.set(mouseYPos / height - 0.5);
     mouseX.set(mouseXPos);
     mouseY.set(mouseYPos);
   };
@@ -114,20 +120,12 @@ function ProjectCard({
 
   const visibleTags = project.tags.slice(0, 6);
 
-  return (
-    <motion.article
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={
-        enableTilt
-          ? { rotateX, rotateY, transformStyle: "preserve-3d" }
-          : undefined
-      }
-      className={`group relative flex flex-col overflow-hidden rounded-3xl glass-dark border-white/5 ${
-        enableTilt ? "perspective-1000 min-h-[480px]" : ""
-      }`}
-    >
+  const cardClassName = `group relative flex flex-col overflow-hidden rounded-3xl glass-dark border-white/5 ${
+    enableTilt ? "perspective-1000 min-h-[480px]" : ""
+  }`;
+
+  const cardBody = (
+    <>
       {enableTilt && (
         <motion.div
           className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
@@ -140,9 +138,9 @@ function ProjectCard({
           src={project.image}
           alt={project.title}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes={PROJECT_CARD_IMAGE_SIZES}
+          quality={65}
           className="object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-nova-black via-nova-black/30 to-transparent" />
       </div>
@@ -191,6 +189,26 @@ function ProjectCard({
 
         <ProjectLinks project={project} onInfo={onInfo} />
       </div>
+    </>
+  );
+
+  if (!enableTilt) {
+    return (
+      <article ref={cardRef} className={cardClassName}>
+        {cardBody}
+      </article>
+    );
+  }
+
+  return (
+    <motion.article
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className={cardClassName}
+    >
+      {cardBody}
     </motion.article>
   );
 }

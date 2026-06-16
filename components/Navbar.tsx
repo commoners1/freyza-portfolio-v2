@@ -34,13 +34,23 @@ export function Navbar() {
     document.body.style.top = `-${scrollY}px`;
 
     return () => {
+      if (!document.body.classList.contains("nav-menu-open")) return;
+
       document.body.classList.remove("nav-menu-open");
       document.body.style.top = "";
       window.scrollTo(0, scrollY);
     };
   }, [isOpen]);
 
-  const closeMenu = () => setIsOpen(false);
+  const closeMenu = () => {
+    if (!isOpen) return;
+
+    const scrollY = Math.abs(Number.parseInt(document.body.style.top || "0", 10));
+    document.body.classList.remove("nav-menu-open");
+    document.body.style.top = "";
+    setIsOpen(false);
+    window.scrollTo(0, scrollY);
+  };
 
   return (
     <>
@@ -54,10 +64,10 @@ export function Navbar() {
       )}
 
       <nav
-        className="fixed top-4 sm:top-6 left-0 right-0 z-40 px-4 sm:px-6 pointer-events-none"
+        className="fixed top-4 sm:top-6 left-0 right-0 z-40 px-4 sm:px-6"
         aria-label="Main navigation"
       >
-        <div className="relative mx-auto w-full max-w-4xl pointer-events-auto">
+        <div className="relative mx-auto w-full max-w-4xl">
           <div className="glass px-4 sm:px-6 py-3 sm:py-4 rounded-2xl flex items-center justify-between gap-3 min-w-0">
             <a
               href="#id"
@@ -121,7 +131,7 @@ export function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={closeMenu}
+                  onClick={() => setIsOpen(false)}
                   className="inline-flex items-center justify-center tap-target text-base font-medium text-white/80 hover:text-nova-cyan hover:bg-white/5 rounded-xl transition-colors px-4"
                 >
                   {item.name}

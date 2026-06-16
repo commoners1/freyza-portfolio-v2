@@ -1,8 +1,28 @@
+let cachedScrollPadding: number | null = null;
+
+function unlockNavMenuScrollLock() {
+  const body = document.body;
+  if (!body.classList.contains("nav-menu-open")) return;
+
+  const scrollY = Math.abs(Number.parseInt(body.style.top || "0", 10)) || window.scrollY;
+  body.classList.remove("nav-menu-open");
+  body.style.top = "";
+  window.scrollTo(0, scrollY);
+}
+
+function getScrollPaddingTop() {
+  if (cachedScrollPadding !== null) return cachedScrollPadding;
+  cachedScrollPadding =
+    Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 104;
+  return cachedScrollPadding;
+}
+
 function pulseSection(element: HTMLElement) {
   element.classList.remove("section-arrived");
-  void element.offsetWidth;
-  element.classList.add("section-arrived");
-  window.setTimeout(() => element.classList.remove("section-arrived"), 480);
+  requestAnimationFrame(() => {
+    element.classList.add("section-arrived");
+    window.setTimeout(() => element.classList.remove("section-arrived"), 480);
+  });
 }
 
 function scheduleArrivalPulse(element: HTMLElement) {
@@ -16,11 +36,11 @@ function scheduleArrivalPulse(element: HTMLElement) {
 
   if ("onscrollend" in window) {
     window.addEventListener("scrollend", fire, { once: true });
+    globalThis.setTimeout(fire, 720);
+    return;
   }
 
-  const distance = Math.abs(element.getBoundingClientRect().top);
-  const estimateMs = Math.min(520, Math.max(280, distance * 0.35));
-  window.setTimeout(fire, estimateMs);
+  globalThis.setTimeout(fire, 420);
 }
 
 export function scrollToSection(hash: string) {
@@ -30,15 +50,21 @@ export function scrollToSection(hash: string) {
   const element = document.getElementById(id);
   if (!element) return;
 
+  unlockNavMenuScrollLock();
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const top = Math.max(
+    0,
+    element.getBoundingClientRect().top + window.scrollY - getScrollPaddingTop(),
+  );
+
+  window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
 
   if (reduceMotion) {
-    element.scrollIntoView({ block: "start" });
     pulseSection(element);
     return;
   }
 
-  element.scrollIntoView({ behavior: "smooth", block: "start" });
   scheduleArrivalPulse(element);
 }
 

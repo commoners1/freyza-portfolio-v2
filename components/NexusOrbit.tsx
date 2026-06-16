@@ -3,11 +3,14 @@
 import { motion } from "motion/react";
 import { site } from "@/data/site";
 import { useMounted } from "@/lib/useClientMotion";
+import { useLightMotion } from "@/lib/useLightMotion";
 
 const ORBIT_DURATION = 22;
 
 export function NexusOrbit() {
   const mounted = useMounted();
+  const lightMotion = useLightMotion();
+  const animateOrbit = mounted && !lightMotion;
 
   return (
     <div className="relative max-w-md mx-auto w-full lg:max-w-none">
@@ -28,7 +31,7 @@ export function NexusOrbit() {
         />
 
         {/* Single orbiting planet */}
-        {mounted ? (
+        {animateOrbit ? (
           <motion.div
             className="absolute inset-0 z-[1] pointer-events-none"
             animate={{ rotate: 360 }}
@@ -41,21 +44,34 @@ export function NexusOrbit() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-4 h-4 rounded-full bg-nova-cyan/80" aria-hidden />
         )}
 
-        <motion.div
-          initial={false}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          className="relative z-10 glass p-8 sm:p-10 rounded-3xl"
-        >
-          <div className="text-center">
-            <div className="text-4xl sm:text-5xl font-mono font-bold text-nova-cyan mb-2">
-              {String(site.yearsExperience).padStart(2, "0")}+
-            </div>
-            <div className="text-xs font-mono uppercase tracking-widest text-label-muted">
-              Years Experience
+        {lightMotion ? (
+          <div className="relative z-10 glass p-8 sm:p-10 rounded-3xl">
+            <div className="text-center">
+              <div className="text-4xl sm:text-5xl font-mono font-bold text-nova-cyan mb-2">
+                {String(site.yearsExperience).padStart(2, "0")}+
+              </div>
+              <div className="text-xs font-mono uppercase tracking-widest text-label-muted">
+                Years Experience
+              </div>
             </div>
           </div>
-        </motion.div>
+        ) : (
+          <motion.div
+            initial={false}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="relative z-10 glass p-8 sm:p-10 rounded-3xl"
+          >
+            <div className="text-center">
+              <div className="text-4xl sm:text-5xl font-mono font-bold text-nova-cyan mb-2">
+                {String(site.yearsExperience).padStart(2, "0")}+
+              </div>
+              <div className="text-xs font-mono uppercase tracking-widest text-label-muted">
+                Years Experience
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

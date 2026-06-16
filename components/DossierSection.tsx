@@ -7,9 +7,12 @@ import { certifications } from "@/data/certifications";
 import { education } from "@/data/education";
 import { languages } from "@/data/languages";
 import { useClientMotion } from "@/lib/useClientMotion";
+import { useLightMotion } from "@/lib/useLightMotion";
 
 export function DossierSection() {
   const { ready } = useClientMotion();
+  const lightMotion = useLightMotion();
+  const animateBars = ready && !lightMotion;
 
   return (
     <section id="dossier" className="section-padding border-t border-white/5 scroll-mt-28 sm:scroll-mt-24">
@@ -37,12 +40,13 @@ export function DossierSection() {
                     <span className="text-xs font-mono text-label-purple">{lang.proficiency}%</span>
                   </div>
                   <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
-                    {ready ? (
+                    {animateBars ? (
                       <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${lang.proficiency}%` }}
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
+                        style={{ width: `${lang.proficiency}%`, transformOrigin: "left center" }}
                         className="h-full bg-gradient-to-r from-nova-purple to-nova-cyan rounded-full shadow-[0_0_10px_rgba(191,0,255,0.5)]"
                       />
                     ) : (

@@ -89,9 +89,9 @@ function ProjectModalPanel({ project, onClose }: { project: Project; onClose: ()
                 src={gallery[activeImage]}
                 alt={`${project.title} screenshot ${activeImage + 1}`}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 640px"
+                quality={75}
                 className="object-cover"
-                referrerPolicy="no-referrer"
               />
             </div>
 
@@ -115,8 +115,8 @@ function ProjectModalPanel({ project, onClose }: { project: Project; onClose: ()
                       alt=""
                       fill
                       sizes="96px"
+                      quality={60}
                       className="object-cover"
-                      referrerPolicy="no-referrer"
                     />
                   </button>
                 ))}

@@ -13,8 +13,9 @@ export function HeroSection() {
   return (
     <section
       id="id"
-      className="relative min-h-[88dvh] sm:min-h-[100dvh] flex flex-col items-center justify-start px-4 sm:px-6 pb-12 sm:pb-20 hero-nav-offset text-center overflow-hidden scroll-mt-28 sm:scroll-mt-32"
+      className="relative min-h-[100dvh] flex flex-col px-4 sm:px-6 pb-6 sm:pb-20 hero-nav-offset text-center overflow-hidden scroll-mt-28 sm:scroll-mt-32"
     >
+      <div className="flex flex-1 w-full flex-col items-center justify-center sm:justify-start">
       <Entrance
         from={{ opacity: 0, scale: 0.92 }}
         className="mb-4 sm:mb-8 flex flex-col items-center gap-3 sm:gap-4"
@@ -55,7 +56,7 @@ export function HeroSection() {
 
       <Entrance
         delay={0.45}
-        className="flex flex-col w-full max-w-xs sm:max-w-none sm:flex-row sm:flex-wrap lg:flex-nowrap justify-center gap-2.5 sm:gap-4 mb-10 sm:mb-20 px-2"
+        className="flex flex-col w-full max-w-xs sm:max-w-none sm:flex-row sm:flex-wrap lg:flex-nowrap justify-center gap-2.5 sm:gap-4 mb-0 sm:mb-20 px-2"
       >
         <a
           href="#contact"
@@ -77,6 +78,7 @@ export function HeroSection() {
           <Download size={18} aria-hidden /> Resume
         </a>
       </Entrance>
+      </div>
 
       <div className="hidden sm:flex absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2">
         <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/55">Scroll to Explore</span>

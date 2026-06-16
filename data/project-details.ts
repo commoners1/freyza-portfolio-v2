@@ -9,7 +9,7 @@ export const projectDetails: Record<
     shortDescription: "A platform for AI-powered chatbots.",
     description:
       "FreyKu.AI is a microservices-based SaaS platform for building and deploying AI chatbots. It integrates GPT-4o and LLaMA models with self-learning from web pages, PDFs, and plain text. The stack includes subscription billing, usage analytics, Xendit payments, and embeddable deployment for client sites.",
-    images: ["/projects/fkai.jpeg"],
+    images: ["/projects/fkai.webp"],
   },
   "NOTCH ERP System": {
     shortDescription: "A unified ERP platform for NOTCH internal management.",
@@ -32,7 +32,11 @@ export const projectDetails: Record<
     shortDescription: "Middleware to pool Salesforce data for UNICEF Indonesia.",
     description:
       "REST API middleware that synchronizes Salesforce donation data with UNICEF Indonesia's public web platform. Built with NestJS and PostgreSQL (Prisma), BullMQ handles high-volume concurrent requests. Includes telemetry for monitoring, Jest test coverage, and a companion React (Vite) dashboard for sync status and system performance.",
-    images: ["/projects/sf-1.webp", "/projects/sf-2.webp", "/projects/sf-3.webp"],
+    images: [
+      "/projects/sf-1.webp",
+      "/projects/sf-2.webp",
+      "/projects/sf-3.webp"
+    ],
   },
   "UNICEF Indonesia": {
     shortDescription: "Official fundraising website for UNICEF Indonesia.",
@@ -83,7 +87,11 @@ export const projectDetails: Record<
     shortDescription: "Professional law firm company website.",
     description:
       "A corporate law firm website with service pages, attorney profiles, and contact sections. Clean responsive multi-page layout delivered as a complete client-facing web presence.",
-    images: ["/projects/firm-1.webp", "/projects/firm-2.webp", "/projects/firm-3.webp"],
+    images: [
+      "/projects/firm-1.webp",
+      "/projects/firm-2.webp",
+      "/projects/firm-3.webp"
+    ],
   },
   "Bel Sekolah App": {
     shortDescription: "School bell scheduling app for Android and iOS.",
@@ -95,6 +103,6 @@ export const projectDetails: Record<
     shortDescription: "Mobile food marketplace app for Android and iOS.",
     description:
       "A mobile food marketplace application with product browsing and a market-style shopping experience. Complete project package with documentation and deliverables for Android and iOS.",
-    images: ["/projects/foodapp.jpg"],
+    images: ["/projects/foodapp.webp"],
   },
 };

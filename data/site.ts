@@ -2,7 +2,7 @@ import type { SiteConfig } from "./types";
 
 export const site: SiteConfig = {
   name: "Freyza Fachrurrozi Kusuma",
-  shortName: "Freyza",
+  shortName: "Freyza Kusuma",
   title: "Full-Stack Developer & Technical Team Lead",
   role: "Full-Stack Developer & Technical Team Lead",
   tagline: "Secure Web Systems & AI Platforms",
@@ -11,7 +11,7 @@ export const site: SiteConfig = {
   mobileSummary:
     "6+ years building secure web systems, APIs & AI platforms.",
   email: "freyza.kusuma.1@gmail.com",
-  phone: "+62 822 8998 2332",
+  phone: "+62 877 8738 0011",
   location: {
     city: "East Jakarta",
     region: "Jakarta",
@@ -21,7 +21,7 @@ export const site: SiteConfig = {
     github: "https://github.com/commoners1",
   },
   resumePath: "/Freyza-Kusuma-Resume.pdf",
-  profileImage: "/profile.svg",
+  profileImage: "/my-profile.webp",
   yearsExperience: 6,
   availableForWork: true,
   siteUrl:

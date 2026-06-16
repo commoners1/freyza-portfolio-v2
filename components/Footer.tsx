@@ -43,7 +43,7 @@ export function Footer() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
             <div>
-              <div className="text-xs font-mono uppercase tracking-widest text-white/30 mb-4 sm:mb-6 underline underline-offset-4 decoration-nova-cyan/30">
+              <div className="text-xs font-mono uppercase tracking-widest text-label-muted mb-4 sm:mb-6 underline underline-offset-4 decoration-nova-cyan/30">
                 Connect
               </div>
               <ul className="space-y-3">
@@ -72,12 +72,12 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <div className="text-xs font-mono uppercase tracking-widest text-white/30 mb-4 sm:mb-6 underline underline-offset-4 decoration-nova-purple/30">
+              <div className="text-xs font-mono uppercase tracking-widest text-label-muted mb-4 sm:mb-6 underline underline-offset-4 decoration-nova-purple/30">
                 Location
               </div>
               <p className="text-white/70">{site.location.city}</p>
               <p className="text-white/70">{site.location.region}, {site.location.country}</p>
-              <p className="text-white/30 text-xs font-mono mt-4 uppercase tracking-widest">FREYZA_NODE</p>
+              <p className="text-label-muted text-xs font-mono mt-4 uppercase tracking-widest">FREYZA_NODE</p>
             </div>
           </div>
         </div>

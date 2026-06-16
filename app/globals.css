@@ -8,6 +8,8 @@
   --color-nova-dark: #0a0a0f;
   --color-nova-cyan: #00f5ff;
   --color-nova-purple: #bf00ff;
+  --color-nova-purple-label: #deb8ff;
+  --color-nova-muted: #b8b8c3;
   --color-nova-glow: rgba(0, 245, 255, 0.1);
 }
 
@@ -65,6 +67,15 @@
 
   .section-padding {
     @apply py-16 sm:py-20 lg:py-24 px-4 sm:px-6;
+  }
+
+  /* WCAG-friendly labels on dark backgrounds (avoid text-white/30–/40) */
+  .text-label-muted {
+    color: var(--color-nova-muted);
+  }
+
+  .text-label-purple {
+    color: var(--color-nova-purple-label);
   }
 
   /* Space below fixed floating navbar (top offset + pill height + breathing room) */

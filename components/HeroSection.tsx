@@ -28,12 +28,12 @@ export function HeroSection() {
 
       <Entrance
         delay={0.1}
-        className="hidden sm:block text-xs sm:text-sm font-mono text-nova-purple uppercase tracking-[0.15em] sm:tracking-[0.25em] mb-3 sm:mb-4 px-2"
+        className="hidden sm:block text-xs sm:text-sm font-mono text-label-purple uppercase tracking-[0.15em] sm:tracking-[0.25em] mb-3 sm:mb-4 px-2"
       >
         {site.title}
       </Entrance>
 
-      <Entrance delay={0.15} className="sm:hidden text-[10px] font-mono text-nova-purple uppercase tracking-[0.2em] mb-2 px-2">
+      <Entrance delay={0.15} className="sm:hidden text-[10px] font-mono text-label-purple uppercase tracking-[0.2em] mb-2 px-2">
         {site.role}
       </Entrance>
 
@@ -97,7 +97,7 @@ export function HeroSection() {
             className="hidden xl:block absolute left-[12%] top-1/2 glass px-4 py-3 rounded-xl border-nova-cyan/20"
           >
             <Cpu size={24} className="text-nova-cyan mb-2" aria-hidden />
-            <div className="text-[10px] font-mono text-white/40 uppercase">Core Stack</div>
+            <div className="text-[10px] font-mono text-label-muted uppercase">Core Stack</div>
             <div className="text-xs font-bold">NestJS / React</div>
           </motion.div>
 
@@ -107,7 +107,7 @@ export function HeroSection() {
             className="hidden xl:block absolute right-[12%] top-[60%] glass px-4 py-3 rounded-xl border-nova-purple/20"
           >
             <Globe size={24} className="text-nova-purple mb-2" aria-hidden />
-            <div className="text-[10px] font-mono text-white/40 uppercase">Based In</div>
+            <div className="text-[10px] font-mono text-label-muted uppercase">Based In</div>
             <div className="text-xs font-bold">{site.location.city}</div>
           </motion.div>
         </>

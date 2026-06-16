@@ -20,7 +20,7 @@ export function DossierSection() {
               <Globe size={20} className="text-nova-purple" aria-hidden />
             </div>
             <div>
-              <h2 className="text-sm font-mono text-nova-purple uppercase tracking-[0.3em]">Communication</h2>
+              <h2 className="text-sm font-mono text-label-purple uppercase tracking-[0.3em]">Communication</h2>
               <h3 className="text-2xl sm:text-3xl font-bold">Linguistic Matrix</h3>
             </div>
           </div>
@@ -32,9 +32,9 @@ export function DossierSection() {
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-1 mb-2">
                     <div>
                       <span className="text-lg font-bold mr-2 sm:mr-3">{lang.name}</span>
-                      <span className="text-xs font-mono text-white/40 uppercase tracking-widest">{lang.level}</span>
+                      <span className="text-xs font-mono text-label-muted uppercase tracking-widest">{lang.level}</span>
                     </div>
-                    <span className="text-xs font-mono text-nova-purple">{lang.proficiency}%</span>
+                    <span className="text-xs font-mono text-label-purple">{lang.proficiency}%</span>
                   </div>
                   <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
                     {ready ? (
@@ -81,7 +81,7 @@ export function DossierSection() {
                 </div>
                 <p className="text-sm text-white/50 mb-2">{edu.location}</p>
                 {edu.gpa && (
-                  <p className="text-sm font-mono text-nova-purple mb-4">GPA: {edu.gpa}</p>
+                  <p className="text-sm font-mono text-label-purple mb-4">GPA: {edu.gpa}</p>
                 )}
                 <ul className="space-y-1">
                   {edu.details.map((detail) => (
@@ -101,7 +101,7 @@ export function DossierSection() {
               <Award size={20} className="text-nova-purple" aria-hidden />
             </div>
             <div>
-              <h2 className="text-sm font-mono text-nova-purple uppercase tracking-[0.3em]">Credentials</h2>
+              <h2 className="text-sm font-mono text-label-purple uppercase tracking-[0.3em]">Credentials</h2>
               <h3 className="text-2xl sm:text-3xl font-bold">Certifications</h3>
             </div>
           </div>
@@ -111,7 +111,7 @@ export function DossierSection() {
               <Reveal key={cert.name} delay={idx * 0.03}>
                 <div className="glass p-4 rounded-xl h-full">
                   <p className="font-bold text-sm mb-1 leading-snug">{cert.name}</p>
-                  <p className="text-xs font-mono text-white/40 leading-relaxed">{cert.issuer}</p>
+                  <p className="text-xs font-mono text-label-muted leading-relaxed">{cert.issuer}</p>
                 </div>
               </Reveal>
             ))}

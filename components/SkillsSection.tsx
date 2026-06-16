@@ -28,7 +28,7 @@ export function SkillsSection() {
     <section id="nexus" className="section-padding bg-nova-dark/50 scroll-mt-28 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div>
-          <h2 className="text-sm font-mono text-nova-purple uppercase tracking-[0.3em] mb-4">Tech Matrix</h2>
+          <h2 className="text-sm font-mono text-label-purple uppercase tracking-[0.3em] mb-4">Tech Matrix</h2>
           <h3 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">The Nexus of My Ecosystem</h3>
           <p className="text-white/50 mb-6 sm:mb-8 text-base sm:text-lg">
             Six years building secure, scalable web systems — from REST APIs and payment gateways

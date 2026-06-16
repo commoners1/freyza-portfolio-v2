@@ -157,7 +157,7 @@ function ProjectCard({
           <h4 className="text-xl sm:text-3xl font-bold mb-1 group-hover:text-nova-cyan transition-colors">
             {project.title}
           </h4>
-          <p className="text-xs font-mono text-white/40 mb-2 sm:mb-3">{project.organization}</p>
+          <p className="text-xs font-mono text-label-muted mb-2 sm:mb-3">{project.organization}</p>
           {project.shortDescription && (
             <p
               className={`text-sm text-white/50 mb-2 sm:mb-3 max-lg:line-clamp-1 lg:line-clamp-2`}
@@ -177,12 +177,12 @@ function ProjectCard({
               </span>
             ))}
             {project.tags.length > 3 && (
-              <span className="px-2.5 py-1 text-[10px] text-white/40 lg:hidden">
+              <span className="px-2.5 py-1 text-[10px] text-label-muted lg:hidden">
                 +{project.tags.length - 3} more
               </span>
             )}
             {project.tags.length > 6 && (
-              <span className="px-2.5 py-1 text-[10px] text-white/40 hidden lg:inline">
+              <span className="px-2.5 py-1 text-[10px] text-label-muted hidden lg:inline">
                 +{project.tags.length - 6} more
               </span>
             )}
@@ -267,7 +267,7 @@ export function ProjectsSection() {
               <button
                 type="button"
                 onClick={() => setMobileExpanded(false)}
-                className="w-full inline-flex items-center justify-center gap-2 tap-target text-sm font-mono text-white/40 hover:text-white/70 transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 tap-target text-sm font-mono text-label-muted hover:text-white/80 transition-colors"
                 aria-expanded={true}
               >
                 Show less

@@ -51,7 +51,7 @@ export function NexusOrbit() {
             <div className="text-4xl sm:text-5xl font-mono font-bold text-nova-cyan mb-2">
               {String(site.yearsExperience).padStart(2, "0")}+
             </div>
-            <div className="text-xs font-mono uppercase tracking-widest text-white/40">
+            <div className="text-xs font-mono uppercase tracking-widest text-label-muted">
               Years Experience
             </div>
           </div>

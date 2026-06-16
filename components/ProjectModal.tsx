@@ -134,7 +134,7 @@ function ProjectModalPanel({ project, onClose }: { project: Project; onClose: ()
               <h2 id="project-modal-title" className="text-2xl sm:text-3xl font-bold mb-1">
                 {project.title}
               </h2>
-              <p className="text-xs font-mono text-white/40">{project.organization}</p>
+              <p className="text-xs font-mono text-label-muted">{project.organization}</p>
             </div>
 
             {project.shortDescription && (
@@ -150,7 +150,7 @@ function ProjectModalPanel({ project, onClose }: { project: Project; onClose: ()
             )}
 
             <div>
-              <h3 className="text-xs font-mono uppercase tracking-widest text-white/40 mb-3">
+              <h3 className="text-xs font-mono uppercase tracking-widest text-label-muted mb-3">
                 Stack
               </h3>
               <div className="flex flex-wrap gap-2">

@@ -5,7 +5,7 @@ export const professionalProjects: Project[] = [
     title: "FreyKu.AI",
     category: "AI SaaS Platform",
     organization: "Personal Project",
-    image: "/projects/fkai.jpeg",
+    image: "/projects/fkai.webp",
     tags: ["NestJS", "React", "FastAPI", "Qdrant", "OpenAI", "Docker"],
     accent: "purple",
     githubUrls: ["https://github.com/commoners1/freyku-ai-chatbot"],

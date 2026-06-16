@@ -44,7 +44,7 @@ export function BackgroundAura() {
         </>
       )}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,5,7,0.8)_100%)]" />
-      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 brightness-100 contrast-150" />
+      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.04] mix-blend-soft-light" />
     </div>
   );
 }

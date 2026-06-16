@@ -19,17 +19,20 @@ export function SmoothScrollEnhancer() {
       if (!section) return;
 
       event.preventDefault();
+
       scrollToSection(href);
 
-      if (history.pushState) {
-        history.pushState(null, "", href);
-      } else {
-        window.location.hash = href;
-      }
+      requestAnimationFrame(() => {
+        if (history.pushState) {
+          history.pushState(null, "", href);
+        } else {
+          window.location.hash = href;
+        }
+      });
     };
 
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    document.addEventListener("click", onClick, { capture: true });
+    return () => document.removeEventListener("click", onClick, { capture: true });
   }, []);
 
   return null;

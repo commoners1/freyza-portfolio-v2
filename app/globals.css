@@ -95,33 +95,17 @@
     0% {
       box-shadow: inset 0 0 0 0 rgba(0, 245, 255, 0);
     }
-    45% {
-      box-shadow: inset 0 0 120px 0 rgba(0, 245, 255, 0.07);
+    50% {
+      box-shadow: inset 0 0 48px 0 rgba(0, 245, 255, 0.05);
     }
     100% {
       box-shadow: inset 0 0 0 0 rgba(0, 245, 255, 0);
     }
   }
 
-  @keyframes section-arrive-content {
-    0% {
-      opacity: 0.82;
-      transform: translateY(14px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   section.section-arrived,
   footer.section-arrived {
-    animation: section-arrive-glow 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  section.section-arrived > *,
-  footer.section-arrived > * {
-    animation: section-arrive-content 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: section-arrive-glow 0.45s ease-out;
   }
 
   /* Space below fixed floating navbar (top offset + pill height + breathing room) */
@@ -152,9 +136,7 @@
   }
 
   section.section-arrived,
-  footer.section-arrived,
-  section.section-arrived > *,
-  footer.section-arrived > * {
+  footer.section-arrived {
     animation: none !important;
   }
 }

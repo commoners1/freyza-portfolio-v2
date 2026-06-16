@@ -1,45 +1,26 @@
-const DEFAULT_DURATION = 880;
-
-function easeInOutCubic(t: number): number {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-}
-
-function getScrollOffset(): number {
-  const nav = document.querySelector("nav");
-  if (nav) {
-    return nav.getBoundingClientRect().bottom + 12;
-  }
-  return 96;
-}
-
 function pulseSection(element: HTMLElement) {
   element.classList.remove("section-arrived");
-  // Force reflow so re-triggering the same section works
   void element.offsetWidth;
   element.classList.add("section-arrived");
-  window.setTimeout(() => element.classList.remove("section-arrived"), 900);
+  window.setTimeout(() => element.classList.remove("section-arrived"), 480);
 }
 
-function animateScroll(targetY: number, duration: number, onComplete?: () => void) {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  const start = performance.now();
+function scheduleArrivalPulse(element: HTMLElement) {
+  let fired = false;
 
-  const step = (now: number) => {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = easeInOutCubic(progress);
-
-    window.scrollTo(0, startY + distance * eased);
-
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      onComplete?.();
-    }
+  const fire = () => {
+    if (fired) return;
+    fired = true;
+    pulseSection(element);
   };
 
-  requestAnimationFrame(step);
+  if ("onscrollend" in window) {
+    window.addEventListener("scrollend", fire, { once: true });
+  }
+
+  const distance = Math.abs(element.getBoundingClientRect().top);
+  const estimateMs = Math.min(520, Math.max(280, distance * 0.35));
+  window.setTimeout(fire, estimateMs);
 }
 
 export function scrollToSection(hash: string) {
@@ -50,20 +31,15 @@ export function scrollToSection(hash: string) {
   if (!element) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const targetY = Math.max(
-    0,
-    element.getBoundingClientRect().top + window.scrollY - getScrollOffset()
-  );
-
-  const onArrive = () => pulseSection(element);
 
   if (reduceMotion) {
-    window.scrollTo({ top: targetY, behavior: "auto" });
-    onArrive();
+    element.scrollIntoView({ block: "start" });
+    pulseSection(element);
     return;
   }
 
-  animateScroll(targetY, DEFAULT_DURATION, onArrive);
+  element.scrollIntoView({ behavior: "smooth", block: "start" });
+  scheduleArrivalPulse(element);
 }
 
 export function isInPageHash(href: string | null): href is `#${string}` {

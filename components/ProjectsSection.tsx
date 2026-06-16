@@ -213,7 +213,7 @@ export function ProjectsSection() {
           Production systems, client deliverables, and personal builds — from ERP platforms and nonprofit
           fundraising to tour sites, HR systems, and mobile apps.
         </p>
-        <p className="sm:hidden text-white/45 text-sm max-w-sm">
+        <p className="sm:hidden text-label-muted text-sm max-w-sm">
           Production systems, client work & personal builds.
         </p>
       </div>
